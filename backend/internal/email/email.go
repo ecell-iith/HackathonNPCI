@@ -19,11 +19,11 @@ var (
 
 func SendEmail(to string, cc []string, subject string, body []byte) (bool, error) {
 	fromName := "E-Cell x NPCI Hackathon"
-	from := "noreply.ecell@iith.ac.in" //TODO: check if this works
+	from := smtpUser 
 	// Setup headers
 	headers := make(map[string]string)
 	headers["From"] = fmt.Sprintf("%s <%s>", fromName, from)
-	headers["Reply-To"] = smtpUser
+	headers["Reply-To"] = os.Getenv("SMTP_REPLY_TO")
 	headers["To"] = to
 	if len(cc) > 0 {
 		headers["Cc"] = strings.Join(cc, ",")
