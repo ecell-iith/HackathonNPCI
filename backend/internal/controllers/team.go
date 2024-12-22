@@ -47,6 +47,10 @@ func HandleTeamRegister(c *gin.Context) {
 
 	if r != 0 {
 		c.JSON(http.StatusTeapot, gin.H{"message": "Registration for the NPCI x E-Cell IIT Hyderabad Hackathon is now closed!"})
+		if database.TeamNameValid(strings.ToLower(data.TeamName)) {
+			c.JSON(http.StatusBadRequest, gin.H{"message": "Team name already in use (case-insensitive)."})
+			return
+		}
 		return
 	}
 

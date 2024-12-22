@@ -310,7 +310,8 @@ func TeamNameValid(name string) bool {
 		}
 	}()
 
-	query := `SELECT EXISTS (SELECT 1 FROM teams WHERE name = $1 )`
+	query := `SELECT EXISTS (SELECT 1 FROM teams WHERE LOWER(name) = LOWER($1))`
+
 	var exists bool
 	err = tx.QueryRow(query, name).Scan(&exists)
 
