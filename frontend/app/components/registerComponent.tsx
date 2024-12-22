@@ -380,6 +380,9 @@ function MembersDataCollectionComponent({ count, teamName, leaderName, leaderEma
 
     // Reset error for the field being changed
     const updatedErrors = [...errors];
+    if (isButtonLoading) {
+      setisButtonLoading(false);
+    }
     if (field === "email" && verifyIITHEmail(value)) {
       updatedErrors[index] = "";
     }
