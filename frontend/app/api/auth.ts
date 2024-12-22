@@ -16,7 +16,6 @@ export const getUserStatus = async () => {
 export const getSessionUser = async () => {
     try {
         const response = await axios.get(`${backendUrl}/session-info`);
-        console.log(response.data)
         if (response.status === 200) {
             return response.data;
         }

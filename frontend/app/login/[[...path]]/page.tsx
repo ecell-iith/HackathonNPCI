@@ -15,7 +15,6 @@ export default function Auth() {
 
   useEffect(() => {
     const redirectTo = searchParams?.get('redirectTo');
-    console.log(redirectTo)
 
     const checkSessionAndRedirect = async () => {
       if (SuperTokens.canHandleRoute([ThirdPartyPreBuiltUI]) === false) {

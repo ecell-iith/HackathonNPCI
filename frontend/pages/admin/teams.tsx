@@ -23,8 +23,6 @@ const AdminPage: React.FC = () => {
         setIsLoading(true);
         try {
             const response = await makeApiCall("teams", { method: "GET" });
-            console.log(response);
-
             const parsedData = response.data.map((team: any) => ({
                 teamName: team.name,
                 membersName: team.members_name,

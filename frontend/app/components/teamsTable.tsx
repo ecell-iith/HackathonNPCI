@@ -77,7 +77,6 @@ function TeamsTable({ tableProp }: FinalProp) {
 
   const handlePromoteModal = (id: number, r: number) => {
     setSelectedTeam(id)
-    console.log(r)
     if (r > 2) {
       setMoreRound(true)
     } else {

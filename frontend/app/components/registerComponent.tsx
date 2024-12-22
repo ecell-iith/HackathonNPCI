@@ -105,7 +105,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ email }) => {
       }
     } catch (error) {
       setTeamNameError("This name has already been taken, please consider different team name.")
-      console.log(error)
     } finally {
       setisButtonLoading(false)
     }
@@ -399,7 +398,6 @@ function MembersDataCollectionComponent({ count, teamName, leaderName, leaderEma
       if (verifyIITHEmail(membersData[index].email.trim())) {
         updatedErrors[index] = '';
       } else {
-        console.log(index)
         updatedErrors[index] = 'This email is not valid OR user is not eligible';
       }
     }
@@ -448,7 +446,6 @@ function MembersDataCollectionComponent({ count, teamName, leaderName, leaderEma
     window.location.href = '/';
   };
 
-  console.log(errors)
 
   return (
     <Flex width="100%" justifyContent="center">

@@ -26,8 +26,6 @@ const Responses: React.FC = () => {
         setIsLoading(true);
         try {
             const response = await makeApiCall("responses", { method: "GET" });
-            console.log(response.data);
-
             const parsedData = response.data.map((data: any) => ({
                 teamName: data.team_name,
                 round_one: data.round_one.String,

@@ -50,12 +50,10 @@ const ResponseTable: React.FC<FinalProp> = ({ tableProp }) => {
         } finally {
             setisButtonLoading(false)
         }
-        console.log(`PROMOTED ID: ${selectedTeam}`)
     }
 
     const handlePromoteModal = (id: number, r: number) => {
         setSelectedTeam(id)
-        console.log(r)
         if (r > 2) {
             setMoreRound(true)
         } else {
