@@ -5,14 +5,14 @@ import (
 )
 
 var (
-	Round1Start = time.Date(2024, 7, 15, 00, 00, 0, 0, time.Local)
-	round1End   = time.Date(2024, 7, 20, 23, 59, 59, 0, time.Local)
+	Round1Start = time.Date(2025, 1, 06, 00, 00, 0, 0, time.Local)
+	round1End   = time.Date(2025, 1, 20, 23, 59, 59, 0, time.Local)
 
-	Round2Start = time.Date(2024, 7, 25, 00, 00, 0, 0, time.Local)
-	round2End   = time.Date(2024, 7, 30, 00, 59, 59, 0, time.Local)
+	Round2Start = time.Date(2025, 1, 25, 00, 00, 0, 0, time.Local)
+	round2End   = time.Date(2025, 1, 30, 00, 59, 59, 0, time.Local)
 
-	Round3Start = time.Date(2024, 8, 2, 00, 00, 0, 0, time.Local)
-	round3End   = time.Date(2024, 8, 2, 23, 59, 59, 0, time.Local)
+	Round3Start = time.Date(2025, 2, 2, 00, 00, 0, 0, time.Local)
+	round3End   = time.Date(2025, 2, 2, 23, 59, 59, 0, time.Local)
 )
 
 func WhatIsCurrentRound() (int, bool) {
