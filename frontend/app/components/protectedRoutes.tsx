@@ -8,7 +8,7 @@ import { Text } from '@chakra-ui/react';
 
 const ProtectedRoute = (WrappedComponent: React.ComponentType) => {
   const Wrapper: React.FC = (props) => {
-    const { isSessionExists, isAuthenticated, loading } = useAuth();
+    const { isSessionExists, isAuthenticated, loading, isAdmin } = useAuth();
     // const [isModalVisible, setModalVisible] = useState(false);
     const router = useRouter();
 
@@ -19,7 +19,10 @@ const ProtectedRoute = (WrappedComponent: React.ComponentType) => {
           query: { redirectTo: router.asPath }
         });
       }
-    }, [loading, isSessionExists, router]);
+      if (isAdmin) {
+        router.push('/admin');
+      }
+    }, [loading, isSessionExists, router, isAdmin]);
 
     if (loading) {
       return <LoadingPortal />;
@@ -31,17 +34,18 @@ const ProtectedRoute = (WrappedComponent: React.ComponentType) => {
     };
     return (
       <>
-        {isAuthenticated ? (
-          <WrappedComponent {...props} />
-        ) : isSessionExists ? (
-          <NotRegisteredModal
-            button='Register'
-            isOpen={true}
-            onClose={onClose}
-            // description='You are not in any registered team. Please register your team first.' 
-            description={<Text color="white" fontWeight="normal" fontSize="1.25rem" > You are not in any registered team. Please register your team first. </Text>}
-          />
-        ) : null}
+        {
+          isAuthenticated ? (
+            <WrappedComponent {...props} />
+          ) : isSessionExists ? (
+            <NotRegisteredModal
+              button='Register'
+              isOpen={true}
+              onClose={onClose}
+              // description='You are not in any registered team. Please register your team first.' 
+              description={<Text color="white" fontWeight="normal" fontSize="1.25rem" > You are not in any registered team. Please register your team first. </Text>}
+            />
+          ) : null}
       </>
     );
   };

@@ -5,6 +5,7 @@ import axios from 'axios';
 export const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isSessionExists, setIsSessionExists] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
 
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -19,6 +20,8 @@ export const useAuth = () => {
                     if (response.status === 200) {
                         if (!response.data.isAdmin) {
                             setIsAuthenticated(true);
+                        }else{
+                            setIsAdmin(true);
                         }
                     }
                 }
@@ -32,5 +35,5 @@ export const useAuth = () => {
         checkAuth();
     }, []);
 
-    return { isSessionExists, isAuthenticated, loading };
+    return { isSessionExists, isAuthenticated, loading, isAdmin };
 };
